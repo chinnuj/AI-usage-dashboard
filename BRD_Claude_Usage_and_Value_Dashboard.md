@@ -8,7 +8,7 @@ This document defines the business requirements for a dashboard that tells the A
 
 The Analytics team is made up of business analysts, data analysts, data engineers and project managers. Every member holds a Claude licence and the team uses Claude Code. No consolidated view of usage, spend or output quality exists today.
 
-The dashboard will be built twice, in Power BI and in Tableau, on one shared data model. It is a portfolio project on dummy data, designed so the same model can be pointed at a live Claude organisation.
+It is a portfolio project on dummy data, designed so the same model can be pointed at a live Claude organisation.
 
 ## 2. Problem statement
 
@@ -39,8 +39,6 @@ The project succeeds when:
 
 - every KPI traces to a documented source field and a written formula;
 
-- Power BI and Tableau show the same value for every KPI on the same data;
-
 - the dashboard produces a named list of idle licences and their cost.
 
 ## 4. Stakeholders and users
@@ -67,8 +65,6 @@ The project covers Claude only, across three themes: adoption, cost and effectiv
 - Licence and usage cost per user
 
 - Accept and reject decisions on Claude Code edit suggestions
-
-- One dashboard, built in both Power BI and Tableau
 
 - A dummy dataset shaped to match Claude's real API and telemetry fields
 
@@ -205,7 +201,7 @@ The dashboard is a single page with a KPI header and six visuals, two per theme.
 | FR-9  | Drill from any team or role to a user-level table with one row per user per month, showing segment, engagement score, cost and acceptance rate                                                                                                              |
 | FR-10 | A visible "data as of" date, and a note beside the effectiveness visuals stating that they cover Claude Code only                                                                                                                                           |
 | FR-11 | Benchmarks are read from the role benchmark table. Engagement weights and caps, segment thresholds and the idle window are fixed assumptions (section 10), documented in the data dictionary                                         |
-| FR-12 | The dashboard is delivered in Power BI and in Tableau from the same data model, with every KPI defined once and implemented as a DAX measure and as a Tableau calculated field                                                                              |
+
 
 ## 8. Data requirements
 
@@ -240,7 +236,7 @@ Field references: [Claude Enterprise Analytics API reference](https://support.cl
 | NFR-1 | Freshness       | Data refreshes once a day; the dashboard shows the latest complete day                                                         |
 | NFR-2 | Privacy         | The default view is aggregated by team and role. User-level detail is restricted to the sponsor and team leads                 |
 | NFR-3 | Privacy         | No prompt or response content is collected or stored                                                                           |
-| NFR-4 | Consistency     | Power BI and Tableau return identical KPI values on the same data                                                              |
+| NFR-4 | Consistency     | Data values match across the different visualizations                                                                          |
 | NFR-5 | Traceability    | Every KPI has a written definition, formula and source field in a data dictionary                                              |
 | NFR-6 | Maintainability | Benchmarks change through the data model. Weights, caps and thresholds are documented assumptions applied in the load and the report measures |
 | NFR-7 | Portability     | The model loads from flat files for the dummy build and from a database for a live build, with no change to the reports        |
